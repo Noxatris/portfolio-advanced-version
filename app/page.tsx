@@ -9,6 +9,7 @@ import HeaderNav from './(components)/HeaderNav';
 
 const Logo3D = dynamic(() => import('./(components)/logo3D'), { ssr: false });
 const ParticleOrbitalRing = dynamic(() => import('./(components)/particleOrbitalRing'), { ssr: false });
+const AudioReactiveCircle = dynamic(() => import('./(components)/AudioReactiveCircle'), { ssr: false });
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
         <Suspense fallback={null}>
           <Logo3D />
           <ParticleOrbitalRing />
+          <AudioReactiveCircle />
           <EffectComposer>
             <Bloom
               intensity={2}
