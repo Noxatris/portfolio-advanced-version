@@ -77,7 +77,7 @@ export default function AudioSpectrumLineCircle() {
 
     return (
         <lineLoop ref={lineRef} geometry={geometryRef.current}>
-            <lineBasicMaterial attach="material" color={0x00ffff} linewidth={2} />
+            <lineBasicMaterial attach="material" color={0xf154ff} linewidth={2} />
         </lineLoop>
     )
 }
