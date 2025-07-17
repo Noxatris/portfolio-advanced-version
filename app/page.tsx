@@ -21,7 +21,7 @@ export default function Home() {
   return (
     <>
       {/* SECTION 1 — Canvas avec effet */}
-      <section className="relative w-screen h-[120vh] bg-black cursor-none overflow-hidden">
+      <section className="relative w-screen h-[100vh] bg-black cursor-none overflow-hidden">
         <HeaderNav />
         <CustomCursor />
 
