@@ -8,9 +8,9 @@ export default function AboutMe() {
                 viewport={{ amount: 1, once: true }}
                 transition={{ duration: 1, delay: 0.5 }}>
                 <blockquote className="text-2xl md:text-3xl italic font-light text-[#D72631] leading-relaxed">
-                    “L'imagination est le commencement de la création.<br />
-                    On imagine ce qu'on désire, on veut ce qu'on imagine,<br />
-                    et enfin, on crée ce que l'on veut.”
+                    “L&apos;imagination est le commencement de la création.<br />
+                    On imagine ce qu&apos;on désire, on veut ce qu&apos;on imagine,<br />
+                    et enfin, on crée ce que l&apos;on veut.”
                 </blockquote>
                 <p className="mt-4 text-sm text-gray-400">— William Shakespeare</p>
             </motion.div>
