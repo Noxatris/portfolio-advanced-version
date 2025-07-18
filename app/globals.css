@@ -26,8 +26,51 @@ body {
 
 }
 
-:hover
-{
+:hover {
   cursor: none;
 }
 
+@layer utilities {
+  @keyframes svg-drop {
+    0% {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+
+    80% {
+      transform: translateY(160px) scaleY(1.4);
+      opacity: 0.8;
+    }
+
+    100% {
+      transform: translateY(200px) scaleY(0.5);
+      opacity: 0;
+    }
+  }
+
+  .animate-svg-drop {
+    animation: svg-drop 2s ease-out forwards;
+  }
+
+  @keyframes firefly {
+    0% {
+      transform: translate(0, 0) scale(1);
+      opacity: 0.8;
+    }
+
+    50% {
+      transform: translate(20px, -30px) scale(1.2);
+      opacity: 1;
+    }
+
+    100% {
+      transform: translate(-10px, 10px) scale(1);
+      opacity: 0.5;
+    }
+  }
+
+  .animate-firefly {
+    animation: firefly 6s ease-in-out infinite alternate;
+  }
+
+}

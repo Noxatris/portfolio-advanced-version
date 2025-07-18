@@ -6,7 +6,8 @@ import { Suspense } from 'react'
 import { EffectComposer, Bloom } from '@react-three/postprocessing'
 import CustomCursor from './(components)/customCursor'
 import HeaderNav from './(components)/HeaderNav'
-import Test from './(components)/test'
+import AnimatedStrands from './(components)/AnimatedStrands'
+import AboutMe from './(components)/aboutMe'
 import { useAudioAnalyser } from './hooks/useAudioAnalyser'
 import { Volume2, VolumeX } from 'lucide-react'
 
@@ -59,17 +60,9 @@ export default function Home() {
       </section>
 
       {/* SECTION 2 — contenu suivant */}
-      <section className="relative min-h-screen bg-black text-white z-10">
-        {/* Fade-in depuis le haut (fondu noir inversé) */}
-        <div
-          className="absolute top-0 left-0 w-full h-32 z-10 pointer-events-none"
-          style={{
-            background: 'linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0))',
-            mixBlendMode: 'multiply',
-          }}
-        />
-
-        <Test />
+      <section className="relative min-h-screen w-screen bg-black text-white z-10 pt-20">
+        <AnimatedStrands />
+        <AboutMe />
       </section>
     </>
   )

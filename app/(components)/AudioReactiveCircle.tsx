@@ -4,7 +4,7 @@ import * as THREE from 'three'
 
 const NUM_POINTS = 128
 const RADIUS = 2.5
-const SMOOTHING_HISTORY = 6 // nombre de frames à moyenner
+const SMOOTHING_HISTORY = 12 // nombre de frames à moyenner
 const AMP_SENSITIVITY = 0.6
 const ACTIVITY_THRESHOLD = 0.05 // seuil pour détecter activité audio
 
