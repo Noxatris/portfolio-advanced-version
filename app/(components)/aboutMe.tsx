@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 export default function AboutMe() {
 
     return (
-        <section className="text-white px-8 pt-20">
+        <section className="text-white pt-20">
             <motion.div className="max-w-4xl mx-auto text-center py-48" initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ amount: 1, once: true }}
@@ -16,10 +16,10 @@ export default function AboutMe() {
             </motion.div>
 
             <motion.section
-                className="relative w-full h-[100vh] overflow-hidden perspective-1000"
+                className="relative w-full h-[100vh] overflow-hidden perspective-1000 mt-48"
                 initial={{ opacity: 0, y: 100 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1.5, ease: "easeOut" }}
+                transition={{ duration: 1.5, delay: .5, ease: "easeOut" }}
             >
 
                 {/* Background image avec dégradé fondu */}
@@ -48,6 +48,17 @@ export default function AboutMe() {
                         />
                     ))}
                 </div>
+
+                <motion.div>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="z-40 text-4xl md:text-6xl text-neon font-[rune] vertical-text">
+                            A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+                        </div>
+                        <div>
+
+                        </div>
+                    </div>
+                </motion.div>
 
                 {/* Portail animé */}
                 <motion.div

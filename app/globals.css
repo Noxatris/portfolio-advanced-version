@@ -31,6 +31,17 @@ body {
 }
 
 @layer utilities {
+  .text-neon {
+    color: #7df9ff;
+    /* Couleur de base bleue claire */
+    text-shadow:
+      0 0 5px #7df9ff,
+      0 0 10px #7df9ff,
+      0 0 20px #7df9ff,
+      0 0 40px #00f0ff,
+      0 0 80px #00f0ff;
+  }
+
   @keyframes svg-drop {
     0% {
       transform: translateY(0) scale(1);

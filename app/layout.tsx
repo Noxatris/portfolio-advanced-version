@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { synemono } from "./fonts";
+import { synemono, rune } from "./fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -15,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${synemono.variable} antialiased`}
+        className={`${synemono.variable} ${rune.variable} antialiased`}
       >
         {children}
       </body>
