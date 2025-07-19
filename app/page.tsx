@@ -7,9 +7,10 @@ import { EffectComposer, Bloom } from '@react-three/postprocessing'
 import CustomCursor from './(components)/customCursor'
 import HeaderNav from './(components)/HeaderNav'
 import AnimatedStrands from './(components)/AnimatedStrands'
-import AboutMe from './(components)/aboutMe'
+import PortalNav from './(components)/portalNav'
 import { useAudioAnalyser } from './hooks/useAudioAnalyser'
 import { Volume2, VolumeX } from 'lucide-react'
+import CitationMain from './(components)/CitationMain'
 
 const Logo3D = dynamic(() => import('./(components)/logo3D'), { ssr: false })
 const ParticleOrbitalRing = dynamic(() => import('./(components)/particleOrbitalRing'), { ssr: false })
@@ -62,7 +63,8 @@ export default function Home() {
       {/* SECTION 2 — contenu suivant */}
       <section className="relative min-h-screen w-screen bg-black text-white z-10 pt-20">
         <AnimatedStrands />
-        <AboutMe />
+        <CitationMain />
+        <PortalNav />
       </section>
     </>
   )

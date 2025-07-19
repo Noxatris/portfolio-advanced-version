@@ -31,15 +31,44 @@ body {
 }
 
 @layer utilities {
-  .text-neon {
+
+  .writing-vertical {
+    writing-mode: vertical-rl;
+    /* ou vertical-lr selon le sens souhaité */
+    text-orientation: upright;
+    /* pour que chaque caractère reste droit */
+  }
+
+
+  .text-neon-animated {
     color: #7df9ff;
-    /* Couleur de base bleue claire */
     text-shadow:
       0 0 5px #7df9ff,
       0 0 10px #7df9ff,
       0 0 20px #7df9ff,
       0 0 40px #00f0ff,
       0 0 80px #00f0ff;
+    animation: neonPulse 2.5s ease-in-out infinite alternate;
+  }
+
+  @keyframes neonPulse {
+    0% {
+      text-shadow:
+        0 0 5px #7df9ff,
+        0 0 10px #7df9ff,
+        0 0 20px #7df9ff,
+        0 0 40px #00f0ff,
+        0 0 80px #00f0ff;
+    }
+
+    100% {
+      text-shadow:
+        0 0 2px #7df9ff,
+        0 0 4px #7df9ff,
+        0 0 8px #00e0ff,
+        0 0 16px #00c0ff,
+        0 0 32px #00a0ff;
+    }
   }
 
   @keyframes svg-drop {
