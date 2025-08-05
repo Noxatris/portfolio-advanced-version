@@ -139,69 +139,61 @@ export default function PsMenu() {
     const renderProjectSub = () => {
         if (!closestProject) return null;
 
-        switch (projectSub) {
-            case "default":
-                return (
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="text-center text-white max-w-2xl px-6 h-full flex flex-col items-center justify-center"
-                    >
-                        <h2 className="text-[3em] font-bold mb-4">{closestProject.title}</h2>
-                        <p className="text-lg text-white/80">{closestProject.description}</p>
-                    </motion.div>
-                );
-            case "stack":
-                return (
-                    <motion.ul
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="grid grid-cols-2 gap-4 text-white text-center"
-                    >
-                        {closestProject.stack.map((stack, index) => (
-                            <li key={index} className="bg-sky-600/30 p-2 rounded-lg">{stack}</li>
-                        ))}
-                    </motion.ul>
-                );
-            case "feature":
-                return (
-                    <motion.ul
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="flex flex-col gap-3 text-white text-left max-w-md"
-                    >
-                        {closestProject.features.map((feature, index) => (
-                            <li key={index} className="bg-emerald-600/30 p-3 rounded-md">{feature}</li>
-                        ))}
-                    </motion.ul>
-                );
-            case "galerie":
-                return (
-                    <div>
-                        <div className="flex gap-4 flex-wrap justify-center">
-                            {closestProject?.images.map((imageUrl, index) => (
-                                <div
-                                    key={index}
-                                    onClick={() => setLightboxIndex(index)}
-                                    className="w-[300px] h-[180px] relative rounded-xl overflow-hidden shadow-md cursor-pointer"
-                                >
-                                    <NextImage fill src={imageUrl} alt={closestProject.title} className="object-cover" />
-                                </div>
-                            ))}
-                        </div>
+        return (
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="max-w-3xl px-6 h-full flex flex-col items-center justify-center text-center"
+            >
+                <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 shadow-2xl border border-white/20 text-white">
+                    <h2 className="text-3xl font-semibold mb-4 text-emerald-300">{closestProject.title}</h2>
 
-                        <Lightbox
-                            open={lightboxIndex !== null}
-                            close={() => setLightboxIndex(null)}
-                            index={lightboxIndex ?? 0}
-                            slides={closestProject.images.map((src) => ({ src }))}
-                        />
-                    </div>
-                );
-            default:
-                return null;
-        }
+                    {projectSub === 'default' && (
+                        <p className="text-md leading-relaxed">{closestProject.description}</p>
+                    )}
+
+                    {projectSub === 'stack' && (
+                        <ul className="grid grid-cols-2 gap-3 mt-4">
+                            {closestProject.stack.map((tech, i) => (
+                                <li key={i} className="bg-sky-600/20 px-3 py-2 rounded text-sm">{tech}</li>
+                            ))}
+                        </ul>
+                    )}
+
+                    {projectSub === 'feature' && (
+                        <ul className="flex flex-col gap-3 mt-4 text-left">
+                            {closestProject.features.map((feat, i) => (
+                                <li key={i} className="bg-emerald-600/20 px-4 py-3 rounded-md">{feat}</li>
+                            ))}
+                        </ul>
+                    )}
+
+                    {projectSub === 'galerie' && (
+                        <>
+                            <div className="flex gap-4 flex-wrap justify-center mt-4">
+                                {closestProject.images.map((img, i) => (
+                                    <div
+                                        key={i}
+                                        onClick={() => setLightboxIndex(i)}
+                                        className="w-[280px] h-[160px] rounded-xl overflow-hidden shadow-lg cursor-pointer relative"
+                                    >
+                                        <NextImage src={img} alt="" fill className="object-cover" />
+                                    </div>
+                                ))}
+                            </div>
+                            <Lightbox
+                                open={lightboxIndex !== null}
+                                close={() => setLightboxIndex(null)}
+                                index={lightboxIndex ?? 0}
+                                slides={closestProject.images.map((src) => ({ src }))}
+                            />
+                        </>
+                    )}
+                </div>
+            </motion.div>
+        );
     };
+
 
     // Fonction pour mettre à jour le projet le plus proche
     const updateClosest = () => {
@@ -225,7 +217,7 @@ export default function PsMenu() {
             }
         });
 
-        // @ts-ignore used for closest.slug
+        // @ts-expect-error            used for closest.slug
         if (closest && closest.slug !== closestProject?.slug) {
             setProjectSub("default");
             setClosestProject(closest);
@@ -368,7 +360,6 @@ export default function PsMenu() {
                 ))}
             </motion.div>
 
-
             {closestProject && (
                 <motion.div
                     key={closestProject.cover} // important pour déclencher l'animation
@@ -377,6 +368,7 @@ export default function PsMenu() {
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.5 }}
                 >
+                    <div className='bg-black/30 absolute w-full h-full z-50' />
                     {/* Dégradé haut */}
                     <motion.div
                         className="absolute top-0 left-0 w-full h-48 bg-gradient-to-t from-transparent to-black z-50 pointer-events-none"
@@ -384,12 +376,12 @@ export default function PsMenu() {
                         animate={{ opacity: 1 }}
                         transition={{ delay: 1.2, duration: 0.8 }}
                     />
-                    <div className="relative w-full h-full inset-shadow-lg pointer-events-none">
+                    <div className="relative w-full h-full pointer-events-none">
                         <NextImage
                             src={closestProject.cover}
                             alt={closestProject.title}
                             fill
-                            className="object-cover"
+                            className="object-cover "
                             priority
                         />
                     </div>
@@ -406,7 +398,7 @@ export default function PsMenu() {
 
             <div
                 ref={targetRef}
-                className="absolute bottom-[20%] right-[1.7%] w-52 h-52 bg-green-400/70  rounded-2xl -z-10 pointer-events-none"
+                className="absolute bottom-[20%] right-0 w-[240px] h-52 bg-slate-950 rounded-2xl -z-10 pointer-events-none"
             />
 
         </div>
