@@ -4,7 +4,14 @@ import { useRef, useState } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 
-const technoList = [
+interface Techno {
+    name: string;
+    icon: string;
+    project: string[];
+    color: string;
+}
+
+const technoList: Techno[] = [
     {
         name: "Github",
         icon: "/icons/github.svg",
@@ -74,12 +81,25 @@ const technoList = [
 ]
 
 export default function Technologie() {
-    const [selectedTech, setSelectedTech] = useState(null)
+    const [selectedTech, setSelectedTech] = useState<Techno | null>(null)
     const socketRef = useRef<HTMLDivElement | null>(null)
 
-    const handleDragEnd = (event: any, tech: any) => {
-        const socketBounds = socketRef.current?.getBoundingClientRect()
-        const { clientX, clientY } = event
+    const handleDragEnd = (
+        event: MouseEvent | TouchEvent,
+        tech: Techno
+    ) => {
+        let clientX = 0;
+        let clientY = 0;
+
+        if ("touches" in event && event.touches.length > 0) {
+            clientX = event.touches[0].clientX;
+            clientY = event.touches[0].clientY;
+        } else if ("clientX" in event) {
+            clientX = event.clientX;
+            clientY = event.clientY;
+        }
+
+        const socketBounds = socketRef.current?.getBoundingClientRect();
 
         if (
             socketBounds &&
@@ -88,11 +108,11 @@ export default function Technologie() {
             clientY >= socketBounds.top &&
             clientY <= socketBounds.bottom
         ) {
-            setSelectedTech(tech)
+            setSelectedTech(tech);
         } else {
-            setSelectedTech(prev => (prev?.name === tech.name ? null : prev))
+            setSelectedTech((prev) => (prev?.name === tech.name ? null : prev));
         }
-    }
+    };
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-black to-[#0f1a2b] text-white p-8 flex flex-col lg:flex-row gap-12 items-center justify-center">
