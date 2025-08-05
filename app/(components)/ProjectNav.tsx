@@ -145,9 +145,9 @@ export default function PsMenu() {
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-center text-white max-w-2xl px-6"
+                        className="text-center text-white max-w-2xl px-6 h-full flex flex-col items-center justify-center"
                     >
-                        <h2 className="text-3xl font-bold mb-4">{closestProject.title}</h2>
+                        <h2 className="text-[3em] font-bold mb-4">{closestProject.title}</h2>
                         <p className="text-lg text-white/80">{closestProject.description}</p>
                     </motion.div>
                 );
@@ -221,11 +221,11 @@ export default function PsMenu() {
 
             if (distance < minDistance) {
                 minDistance = distance;
-                closest = projects[i] as Project;
+                closest = projects[i];
             }
         });
 
-        // ⚠️ Vérification : mise à jour uniquement si le projet a changé
+        // @ts-ignore used for closest.slug
         if (closest && closest.slug !== closestProject?.slug) {
             setProjectSub("default");
             setClosestProject(closest);
@@ -304,21 +304,21 @@ export default function PsMenu() {
                             onClick={() => setProjectSub("stack")}
                             className="w-16 h-16 md:w-20 md:h-20 flex justify-center items-center rounded-full shadow-md shadow-sky-400 hover:scale-110 transition-transform duration-200 text-white bg-gradient-to-b from-sky-500 to-sky-800"
                         >
-                            <Layers className='bg-black/10 rounded-full p-2 w-1/2 h-1/2'/>
+                            <Layers className='bg-black/10 rounded-full p-2 w-1/2 h-1/2' />
                         </motion.button>
 
                         <motion.button
                             onClick={() => setProjectSub("feature")}
                             className="w-16 h-16 md:w-20 md:h-20 flex justify-center items-center rounded-full shadow-md shadow-emerald-400 hover:scale-110 transition-transform duration-200 text-white bg-gradient-to-b from-emerald-500 to-emerald-800"
                         >
-                            <ClipboardList className='bg-black/10 rounded-full p-2 w-1/2 h-1/2'/>
+                            <ClipboardList className='bg-black/10 rounded-full p-2 w-1/2 h-1/2' />
                         </motion.button>
 
                         <motion.button
                             onClick={() => setProjectSub("galerie")}
                             className="w-16 h-16 md:w-20 md:h-20 flex justify-center items-center rounded-full shadow-md shadow-amber-400 hover:scale-110 transition-transform duration-200 text-white bg-gradient-to-b from-amber-500 to-amber-800"
                         >
-                            <LucidImage className='bg-black/10 rounded-full p-2 w-1/2 h-1/2'/>
+                            <LucidImage className='bg-black/10 rounded-full p-2 w-1/2 h-1/2' />
                         </motion.button>
 
                         <Link
@@ -327,7 +327,7 @@ export default function PsMenu() {
                             rel="noopener noreferrer"
                             className="w-16 h-16 md:w-20 md:h-20 flex justify-center items-center rounded-full shadow-md shadow-red-400 hover:scale-110 transition-transform duration-200 text-white bg-gradient-to-b from-red-500 to-red-800"
                         >
-                            <Laptop className='bg-black/10 rounded-full p-2 w-1/2 h-1/2'/>
+                            <Laptop className='bg-black/10 rounded-full p-2 w-1/2 h-1/2' />
                         </Link>
                     </div>
                 )}
@@ -384,7 +384,7 @@ export default function PsMenu() {
                         animate={{ opacity: 1 }}
                         transition={{ delay: 1.2, duration: 0.8 }}
                     />
-                    <div className="relative w-full h-full pointer-events-none">
+                    <div className="relative w-full h-full inset-shadow-lg pointer-events-none">
                         <NextImage
                             src={closestProject.cover}
                             alt={closestProject.title}
