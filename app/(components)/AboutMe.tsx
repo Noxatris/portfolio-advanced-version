@@ -1,4 +1,4 @@
-import { easeOut, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import FirstPart from './AboutMe/FirstPart/FirstPart'
 import SecondPart from './AboutMe/SecondPart/SecondPart'
 import ThirdPart from './AboutMe/ThirdPart/ThirdPart'

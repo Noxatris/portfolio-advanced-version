@@ -136,8 +136,6 @@ export default function PsMenu() {
     const [closestProject, setClosestProject] = useState<Project | null>(null);
     const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
-
-    const btnNav = 'w-16 h-16 md:w-20 md:h-20 flex justify-center items-center rounded-full shadow-lg hover:scale-110 transition-transform duration-200 text-white';
     const renderProjectSub = () => {
         if (!closestProject) return null;
 
@@ -223,7 +221,7 @@ export default function PsMenu() {
 
             if (distance < minDistance) {
                 minDistance = distance;
-                closest = projects[i];
+                closest = projects[i] as Project;
             }
         });
 
