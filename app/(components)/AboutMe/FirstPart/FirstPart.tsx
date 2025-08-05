@@ -1,10 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import TypingText from "./TypingText";
-import DrawingText from "./DrawingText";
-import AssemblingText from "./AssemblingText";
-import IdentityCard from "./IdentityCard";
 import WordCube from "./WordCube"
 
 export default function HeroSection() {
