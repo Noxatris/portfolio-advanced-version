@@ -4,13 +4,18 @@ import { Canvas } from '@react-three/fiber'
 import dynamic from 'next/dynamic'
 import { Suspense } from 'react'
 import { EffectComposer, Bloom } from '@react-three/postprocessing'
+
 import CustomCursor from './(components)/customCursor'
-import HeaderNav from './(components)/HeaderNav'
 import AnimatedStrands from './(components)/AnimatedStrands'
-import PortalNav from './(components)/portalNav'
+import CitationMain from './(components)/CitationMain'
+import AboutMe from './(components)/AboutMe'
+import ProjectNav from './(components)/ProjectNav'
+import PortalNav from './(components)/PortalNav'
+import Technologie from './(components)/Technologie'
+
 import { useAudioAnalyser } from './hooks/useAudioAnalyser'
 import { Volume2, VolumeX } from 'lucide-react'
-import CitationMain from './(components)/CitationMain'
+
 
 const Logo3D = dynamic(() => import('./(components)/logo3D'), { ssr: false })
 const ParticleOrbitalRing = dynamic(() => import('./(components)/particleOrbitalRing'), { ssr: false })
@@ -24,7 +29,6 @@ export default function Home() {
     <>
       {/* SECTION 1 — Canvas avec effet */}
       <section className="relative w-screen h-[100vh] bg-black cursor-none overflow-hidden">
-        <HeaderNav />
         <CustomCursor />
 
         {/* Bouton mute/demute */}
@@ -60,11 +64,32 @@ export default function Home() {
         />
       </section>
 
-      {/* SECTION 2 — contenu suivant */}
+      {/* ABOUT ME */}
       <section className="relative min-h-screen w-screen bg-black text-white z-10 pt-20">
         <AnimatedStrands />
         <CitationMain />
-        <PortalNav />
+        <AboutMe />
+      </section>
+
+      {/* PROJET */}
+      <section className="relative min-h-screen w-screen bg-black text-white z-10">
+
+        <ProjectNav />
+      </section>
+
+      {/* TECHNOLOGIE */}
+      <section className="relative min-h-screen w-screen bg-black text-white z-10">
+          <Technologie />
+      </section>
+
+      {/* SERVICES */}
+      <section className="relative min-h-screen w-screen bg-gradient-to-tr from-black to-[#0f1a2b] text-white z-10">
+
+      </section>
+
+      {/* CONTACT */}
+      <section className="relative min-h-screen w-screen bg-black text-white z-10">
+
       </section>
     </>
   )
