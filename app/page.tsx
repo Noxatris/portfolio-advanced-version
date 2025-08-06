@@ -10,7 +10,6 @@ import AnimatedStrands from './(components)/AnimatedStrands'
 import CitationMain from './(components)/CitationMain'
 import AboutMe from './(components)/AboutMe'
 import ProjectNav from './(components)/ProjectNav'
-import PortalNav from './(components)/PortalNav'
 import Technologie from './(components)/Technologie'
 
 import { useAudioAnalyser } from './hooks/useAudioAnalyser'
@@ -78,7 +77,7 @@ export default function Home() {
       </section>
 
       {/* TECHNOLOGIE */}
-      <section className="relative min-h-screen w-screen bg-black text-white z-10">
+      <section className="relative min-h-screen w-screen bg-black text-white z-10 pt-8">
           <Technologie />
       </section>
 

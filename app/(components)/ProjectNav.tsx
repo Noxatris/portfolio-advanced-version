@@ -143,7 +143,7 @@ export default function PsMenu() {
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="max-w-3xl px-6 h-full flex flex-col items-center justify-center text-center"
+                className="max-w-3xl px-6 h-[80%] flex flex-col items-center justify-center text-center"
             >
                 <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 shadow-2xl border border-white/20 text-white">
                     <h2 className="text-3xl font-semibold mb-4 text-emerald-300">{closestProject.title}</h2>
